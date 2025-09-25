@@ -3,12 +3,47 @@
 ## Méthode 1: Installation Manuelle
 
 ### 1. Création du dossier plugin
+
+**Sur Ubuntu/CentOS (installation standard):**
 ```bash
-# Sur votre serveur WordPress
 cd /var/www/html/wp-content/plugins/
 sudo mkdir patchledger-agent
 sudo cp patchledger-agent-wp.php patchledger-agent/
 sudo chown -R www-data:www-data patchledger-agent/
+```
+
+**Sur Debian (paquet wordpress):**
+```bash
+# Les plugins Debian sont dans /var/lib/wordpress/wp-content/
+cd /var/lib/wordpress/wp-content/plugins/
+sudo mkdir patchledger-agent
+sudo cp patchledger-agent-wp.php patchledger-agent/
+sudo chown -R www-data:www-data patchledger-agent/
+```
+
+**Détection automatique du chemin WordPress:**
+```bash
+# Script pour trouver automatiquement le bon répertoire
+WP_PATH=$(find /var -name "wp-config.php" 2>/dev/null | head -1 | xargs dirname 2>/dev/null)
+if [ -z "$WP_PATH" ]; then
+    WP_PATH=$(find /usr/share -name "wp-config.php" 2>/dev/null | head -1 | xargs dirname 2>/dev/null)
+fi
+
+if [ -n "$WP_PATH" ]; then
+    echo "WordPress trouvé dans: $WP_PATH"
+    PLUGINS_PATH="$WP_PATH/wp-content/plugins"
+    # Sur Debian, vérifier aussi /var/lib/wordpress
+    if [ ! -d "$PLUGINS_PATH" ] && [ -d "/var/lib/wordpress/wp-content/plugins" ]; then
+        PLUGINS_PATH="/var/lib/wordpress/wp-content/plugins"
+    fi
+
+    sudo mkdir -p "$PLUGINS_PATH/patchledger-agent"
+    sudo cp patchledger-agent-wp.php "$PLUGINS_PATH/patchledger-agent/"
+    sudo chown -R www-data:www-data "$PLUGINS_PATH/patchledger-agent/"
+    echo "Plugin installé dans: $PLUGINS_PATH/patchledger-agent/"
+else
+    echo "WordPress non trouvé. Vérifiez votre installation."
+fi
 ```
 
 ### 2. Activation depuis l'admin WordPress
