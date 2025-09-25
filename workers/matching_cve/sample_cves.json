@@ -1,0 +1,26 @@
+[
+  {
+    "component": "WooCommerce",
+    "cve_id": "CVE-2024-XXXX",
+    "severity": "Critical",
+    "fixed_in": "8.9.0"
+  },
+  {
+    "component": "Elementor",
+    "cve_id": "CVE-2025-YYYY",
+    "severity": "High",
+    "fixed_in": "3.23.0"
+  },
+  {
+    "component": "Prestashop",
+    "cve_id": "CVE-2024-ZZZZ",
+    "severity": "High",
+    "fixed_in": "8.1.5"
+  },
+  {
+    "component": "magento/product-community-edition",
+    "cve_id": "CVE-2024-ABCD",
+    "severity": "Critical",
+    "fixed_in": "2.4.7"
+  }
+]

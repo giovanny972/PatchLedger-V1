@@ -1,0 +1,8 @@
+{
+  "freshness_hours": 12,
+  "retention_days": 35,
+  "offsite": true,
+  "region": "eu-west-3",
+  "last_restore_at": "2025-09-01T02:00:00Z",
+  "immutable": true
+}

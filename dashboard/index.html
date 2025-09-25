@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PatchLedger — Dashboard MVP</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:24px;background:#0b0f14;color:#e8eef3}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:#121923;border:1px solid #203042;border-radius:16px;padding:16px;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+    .kpi{font-size:32px;font-weight:700}
+    .ok{color:#62d69a}.warn{color:#ffd166}.bad{color:#ef476f}
+    button{background:#1d7ed6;color:white;border:none;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    h1{margin-bottom:8px}
+    small{opacity:.7}
+  </style>
+</head>
+<body>
+  <h1>PatchLedger — <small>Autopatch · Staging · Preuves</small></h1>
+  <div class="grid">
+    <div class="card">
+      <h3>SLA Patch ≤ 7 j</h3>
+      <div class="kpi ok" id="kpi-sla">96%</div>
+      <p>Sites sans vulnérabilité critique > 7 jours.</p>
+      <button onclick="alert('Exécuter staging sur 3 sites à risque…')">Patch en staging</button>
+    </div>
+    <div class="card">
+      <h3>Sauvegardes</h3>
+      <div class="kpi warn" id="kpi-backup">90%</div>
+      <p>Backups &lt; 24 h, test de restauration &lt; 30 j.</p>
+      <button onclick="alert('Lancer restore test sur 2 sites…')">Tester restauration</button>
+    </div>
+    <div class="card">
+      <h3>Tickets ouverts</h3>
+      <div class="kpi bad" id="kpi-tickets">12</div>
+      <p>Backlog exécutable (plugins à mettre à jour).</p>
+      <button onclick="alert('Générer scripts WP-CLI/Composer…')">Générer scripts</button>
+    </div>
+  </div>
+</body>
+</html>

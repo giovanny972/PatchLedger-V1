@@ -1,0 +1,33 @@
+{
+  "site": "https://exemple.tld",
+  "cms": "wordpress",
+  "components": [
+    {
+      "type": "core",
+      "name": "wordpress",
+      "version": "6.5.3"
+    },
+    {
+      "type": "plugin",
+      "name": "WooCommerce",
+      "version": "8.7.0",
+      "vendor": "Automattic"
+    },
+    {
+      "type": "plugin",
+      "name": "Elementor",
+      "version": "3.20.0",
+      "vendor": "Elementor"
+    },
+    {
+      "type": "theme",
+      "name": "Astra",
+      "version": "4.6.2",
+      "vendor": "Brainstorm Force"
+    }
+  ],
+  "backup_tools": [
+    "updraftplus"
+  ],
+  "collected_at": "2025-09-17T10:00:00Z"
+}

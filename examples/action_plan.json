@@ -1,0 +1,26 @@
+{
+  "plan_id": "PLAN-123",
+  "site": "https://exemple.tld",
+  "steps": [
+    {
+      "type": "snapshot",
+      "details": "backup/snapshot pre-update"
+    },
+    {
+      "type": "update",
+      "script": "wp plugin update woocommerce --version=8.9.0"
+    },
+    {
+      "type": "tests",
+      "details": "smoke tests + visual diff"
+    },
+    {
+      "type": "promote",
+      "details": "promote to prod if green"
+    },
+    {
+      "type": "rollback",
+      "details": "auto if tests fail"
+    }
+  ]
+}
